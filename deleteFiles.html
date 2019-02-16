@@ -51,33 +51,6 @@ table, td, th {
 	<script>
 		var auth = firebase.auth();
 		
-		function checkPassword(){
-			var password = document.getElementById("password").value;
-			var actualPassRef = firebase.database().ref('GlobalData/password');
-			console.log("typed "+password);
-			actualPassRef.once('value').then(function(snapshot) {
-				if(snapshot.val()!=null){
-					obj = snapshot.val();
-					if(password==obj){
-						console.log("password matched");
-						firebase.database().ref('GlobalData/status').set('true', 
-						  function(error) {
-							if (error) {
-							  // The write failed...
-							} else {
-							  window.open('unrestrictedModeIndex.html', '_self');
-							}
-						  });
-
-					}else{
-						console.log("password not matched");
-						window.alert("wrong password");
-					}
-				}
-			});
-			
-		}
-		
 		$(document).ready(function(){
 			$("#uploadList").hide();
 		});
@@ -86,12 +59,14 @@ table, td, th {
 		  auth.onAuthStateChanged(function(user) {
 			if (user) {
 				  console.log('Anonymous user signed-in.', user);
-				  readFiles(true);
 				  
-				// check if user is logged in
+				  // check if user is logged in
 				var logstatus = firebase.database().ref('GlobalData/status');
+				console.log("status "+logstatus);
 				if(logstatus=='false'){
 					window.open("index.html","_self");
+				}else{
+					readFiles(true);
 				}
 			} else {
 			  console.log('There was no anonymous session. Creating a new anonymous user.');
