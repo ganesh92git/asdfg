@@ -11,11 +11,45 @@
     <meta name="theme-color" content="#ffffff" />
 
 <title>LogIn</title>
+	
+	<!--<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-storage.js"></script> 
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDNtZL7iuvfKrlNb7fzVp6Uu9InDewtffw",
+    authDomain: "projects92.firebaseapp.com",
+    databaseURL: "https://projects92.firebaseio.com",
+    projectId: "projects92",
+    storageBucket: "projects92.appspot.com",
+    messagingSenderId: "194786329134"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+	table {
+	  border-collapse: collapse;
+	}
+
+	table, td, th {
+	  border: 1px solid black;
+	  padding : 5px;
+	}
+</style>
+	
   <link rel="shortcut icon" href="icons/w.png" />
   <link rel="manifest" href="./manifest.json" />
 </head>
 <body>
-Checking 1
+Checking 2
 <script>
 	console.log("checking app");
 </script>
