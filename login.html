@@ -71,7 +71,7 @@
 					obj = snapshot.val();
 					if(password==obj){
 						console.log("password matched");
-						firebase.database().ref('GlobalData/gan').set('true', 
+						firebase.database().ref('GlobalData/status').set('true', 
 						  function(error) {
 							if (error) {
 							  // The write failed...
