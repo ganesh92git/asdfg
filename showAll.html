@@ -273,7 +273,7 @@ table, td, th {
 		}
 		
 		function resetLogin(){
-			firebase.database().ref('GlobalData/gan').set('false');
+			firebase.database().ref('GlobalData/status').set('false');
 			window.open('index.html', '_self');
 		}
 	</script>
