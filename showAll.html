@@ -56,24 +56,24 @@ table, td, th {
 			$("#uploadList").hide();
 		});
 		
-		function checkLogin(){
-			var imgRef=firebase.database().ref('GlobalData/gan');
-			imgRef.once('value').then(function(snapshot) {
-				if(snapshot.val()!=null){
-					obj = snapshot.val();
-					if(obj=="false"){
-						window.open('login.html', '_self');
-					}
-				}
-			});
-		}
-		
 		window.onload = function() {
 		  auth.onAuthStateChanged(function(user) {
 			if (user) {
-			  console.log('Anonymous user signed-in.', user);
-			  checkLogin();	
-			  readFiles(true);
+				console.log('Anonymous user signed-in.', user);
+			    
+				// check if user is logged in
+				var logstatus = firebase.database().ref('GlobalData/status');
+				logstatus.once('value').then(function(snapshot) {
+					if(snapshot.val()!=null){
+						obj = snapshot.val();
+						console.log("status "+obj);
+						if(obj=='false'){
+							window.open("index.html","_self");
+						}else{
+							readFiles(true);
+						}
+					}
+				});
 			} else {
 			  console.log('There was no anonymous session. Creating a new anonymous user.');
 			  // Sign the user in anonymously since accessing Storage requires the user to be authorized.
